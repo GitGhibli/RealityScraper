@@ -19,26 +19,29 @@ def processPage(url, data, depth):
 
     for result in results:
         linkWithToken = result.xpath('./a/attribute::href').extract_first()
-        address = result.xpath('.//div[@class="tmp-search-card-list-view__title tmp-search-card-list-view__title--bold"]/text()').extract_first()
-        priceRaw = result.xpath('.//div[@class="tmp-search-card-list-view__price"]/text()').extract_first()
+        address = result.xpath('.//div[contains(@class,"tmp-search-card-list-view__title")]/text()').extract_first()
+        area = result.xpath('.//div[contains(@class,"tmp-search-card-list-view__subtitle")]/text()').extract_first()
+        priceRaw = result.xpath('.//div[contains(@class,"tmp-search-card-list-view__price")]/text()').extract_first()
 
         if linkWithToken is None or priceRaw is None:
             continue
         
         link = re.search(r'(.*)\?', linkWithToken)[1]
-        price = re.search(r'\$[ \w]*', priceRaw)[0]
+        price = re.search(r'\$([,\d]+)([ \w]+)', priceRaw)
 
-        data.append((link, address, price))
+        data.append((link, address, area, price[1], price[2].strip()))
     
     endDataCount = len(data)
     print("Realities found:" + str(endDataCount))
 
-    if nextLink is not None and startDataCount != endDataCount and depth < 2:
+    if nextLink is not None and startDataCount != endDataCount and depth < 1000:
         processPage("https://www.trademe.co.nz/" + nextLink, data, depth + 1)
 
 processPage(tradeMeUrl, data, 0)
 
 f = open(r'Output\tradeMeOutput' + str(time.time()) + ".txt", "w")
 for item in data:
-    f.write(str(item) + "\n")
+    for attribute in item:
+        f.write(attribute + ";")
+    f.write("\n")
 f.close()
