@@ -1,0 +1,1 @@
+retrieve Bing key for geocoding using "https://www.bingmapsportal.com/Application"
