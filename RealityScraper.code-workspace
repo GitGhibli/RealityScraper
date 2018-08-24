@@ -3,5 +3,8 @@
 		{
 			"path": "Source"
 		}
-	]
+	],
+	"settings": {
+		"python.pythonPath": "C:\\Users\\Martin\\envs\\web_scrap\\Scripts\\python.exe"
+	}
 }
