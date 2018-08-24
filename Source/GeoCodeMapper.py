@@ -10,7 +10,9 @@ class JsonEncoder(json.JSONEncoder):
 with open(r'Output\data.txt') as f:
     data = json.load(f)
 
-geolocator = Bing('ApfjtgVg2-JtMzi3b-sdJYnHNE6bpkRIdug30idpvaB-cF51TsA_BnppDBXRSujo', timeout=None)
+# key = 'ApfjtgVg2-JtMzi3b-sdJYnHNE6bpkRIdug30idpvaB-cF51TsA_BnppDBXRSujo'
+key = ""
+geolocator = Bing(key , timeout=None)
 
 totalData = len(data)
 counter = 0

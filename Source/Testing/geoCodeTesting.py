@@ -18,7 +18,9 @@ addresses = [
     ('507/2,Dockside,Lane', 'City,Centre, Auckland,City')
 ]
 
-geolocator = Bing('ApfjtgVg2-JtMzi3b-sdJYnHNE6bpkRIdug30idpvaB-cF51TsA_BnppDBXRSujo')
+# key = 'ApfjtgVg2-JtMzi3b-sdJYnHNE6bpkRIdug30idpvaB-cF51TsA_BnppDBXRSujo'
+key = ""
+geolocator = Bing(key)
 
 f = open(r'Output\addCoordinates.txt', "w")
 
