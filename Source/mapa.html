@@ -27,18 +27,18 @@
                     id: 'mapbox.streets'
                 }).addTo(mymap);
             
-                L.marker([-36.914764, 174.748535]).addTo(mymap)
-                    .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-            
-            
-                mymap.on('click', function(e){
-                    var popup = L.popup();
-                    popup
-                        .setLatLng(e.latlng)
-                        .setContent("You clicked the map at " + e.latlng.toString())
-                        .openOn(mymap);
-                });
-            
+                var flats = [
+                    {title:'10D/8 Scotia place, Auckland City , New Zealand', latitude:-36.85651, longitude:174.76084},
+                    {title:'Fully,Furnished,MILFORD,MARINA	Milford North,Shore,City New Zealand', latitude:-36.7999992370605, longitude:174.75},
+                    {title:'unit/18,Centreway,Road	Orewa Rodney New Zealand', latitude:-36.5956199, longitude:174.69612},
+                    {title:'Whitford	Whitford Manukau,City New Zealand', latitude:-36.94029, longitude:174.94585},
+                    {title:'Lonely,Track,road	Albany North,Shore,City New Zealand', latitude:-36.71121, longitude:174.70203},
+                    {title:'1102/30,Beach,Road	City,Centre Auckland,City New Zealand', latitude:-36.84587, longitude:174.77277}
+                    ];     
+                
+                for (var flat in flats){
+                    L.marker([flats[flat].latitude, flats[flat].longitude]).addTo(mymap).bindPopup(flats[flat].title).openPopup();
+                }
             </script>
     </body>
 </html>
