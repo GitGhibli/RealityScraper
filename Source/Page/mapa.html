@@ -79,11 +79,11 @@
 
             for (var flat in flats){
                 if(flats[flat].price < 300){
-                    L.marker([flats[flat].latitude, flats[flat].longitude], {icon: greenIcon}).addTo(mymap).bindPopup(flats[flat].address + "["+ flats[flat].price + "]");
+                    L.marker([flats[flat].latitude, flats[flat].longitude], {icon: greenIcon}).addTo(mymap).bindPopup(flats[flat].address + " "+ flats[flat].price + "$");
                 }else if(flats[flat].price >= 300 && flats[flat].price < 600 ){
-                    L.marker([flats[flat].latitude, flats[flat].longitude], {icon: blueIcon}).addTo(mymap).bindPopup(flats[flat].address + "["+ flats[flat].price + "]");
+                    L.marker([flats[flat].latitude, flats[flat].longitude], {icon: blueIcon}).addTo(mymap).bindPopup(flats[flat].address + " "+ flats[flat].price + "$");
                 }else{
-                    L.marker([flats[flat].latitude, flats[flat].longitude], {icon: redIcon}).addTo(mymap).bindPopup(flats[flat].address + "["+ flats[flat].price + "]");
+                    L.marker([flats[flat].latitude, flats[flat].longitude], {icon: redIcon}).addTo(mymap).bindPopup(flats[flat].address + " "+ flats[flat].price + "$");
                 }
             }
             </script>
